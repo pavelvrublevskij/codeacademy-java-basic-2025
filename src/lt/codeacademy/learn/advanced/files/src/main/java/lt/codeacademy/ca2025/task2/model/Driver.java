@@ -1,6 +1,8 @@
 package lt.codeacademy.ca2025.task2.model;
 
-public class Driver {
+import java.io.Serializable;
+
+public class Driver implements Serializable {
 
 	private String name;
 	private String car;
