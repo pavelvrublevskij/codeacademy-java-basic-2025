@@ -2,10 +2,13 @@ package lt.codeacademy.ca2025.task2.model;
 
 public class Driver {
 
-	private final String name;
-	private final String car;
-	private final String licensePlate;
-	private final int mileage;
+	private String name;
+	private String car;
+	private String licensePlate;
+	private int mileage;
+
+	public Driver() {
+	}
 
 	public Driver(final String name, final String car, final String licensePlate, final int mileage) {
 		this.name = name;
@@ -18,15 +21,31 @@ public class Driver {
 		return name;
 	}
 
+	public void setName(final String name) {
+		this.name = name;
+	}
+
 	public String getCar() {
 		return car;
+	}
+
+	public void setCar(final String car) {
+		this.car = car;
 	}
 
 	public String getLicensePlate() {
 		return licensePlate;
 	}
 
+	public void setLicensePlate(final String licensePlate) {
+		this.licensePlate = licensePlate;
+	}
+
 	public int getMileage() {
 		return mileage;
+	}
+
+	public void setMileage(final int mileage) {
+		this.mileage = mileage;
 	}
 }
