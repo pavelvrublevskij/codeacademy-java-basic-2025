@@ -9,7 +9,7 @@ import java.util.List;
 import lt.codeacademy.ca2025.task2.model.Driver;
 import lt.codeacademy.ca2025.task2.transformer.DriverCSVTransformer;
 
-public class DriverCSVOperationService {
+public class DriverCSVOperationService implements DriverOperatorService{
 
 	private final static Path FILE_PATH = Path.of(System.getProperty("user.home"), "ca2025", "task2.csv");
 
@@ -19,7 +19,7 @@ public class DriverCSVOperationService {
 		this.driverCSVTransformer = driverCSVTransformer;
 	}
 
-	public void operate(List<Driver> drivers) {
+	public void operate(final List<Driver> drivers) {
 		try {
 			Files.createDirectories(FILE_PATH.getParent());
 			Files.writeString(FILE_PATH, "", StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);

@@ -2,14 +2,14 @@ package lt.codeacademy.ca2025.task2;
 
 import java.util.List;
 import lt.codeacademy.ca2025.task2.model.Driver;
-import lt.codeacademy.ca2025.task2.service.DriverCSVOperationService;
+import lt.codeacademy.ca2025.task2.service.DriverOperatorService;
 
 public class Task2Manager {
 
-	private final DriverCSVOperationService driverCSVOperationService;
+	private final DriverOperatorService driverOperatorService;
 
-	public Task2Manager(final DriverCSVOperationService driverCSVOperationService) {
-		this.driverCSVOperationService = driverCSVOperationService;
+	public Task2Manager(final DriverOperatorService driverOperatorService) {
+		this.driverOperatorService = driverOperatorService;
 	}
 
 	private final List<Driver> drivers = List.of(
@@ -21,7 +21,7 @@ public class Task2Manager {
 	                                            );
 
 	public void run() {
-		driverCSVOperationService.operate(drivers);
+		driverOperatorService.operate(drivers);
 	}
 
 }
