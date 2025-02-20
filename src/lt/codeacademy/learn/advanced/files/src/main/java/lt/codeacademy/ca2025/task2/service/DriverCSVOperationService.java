@@ -8,9 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 import lt.codeacademy.ca2025.task2.model.Driver;
 import lt.codeacademy.ca2025.task2.transformer.DriverCSVTransformer;
-import static lt.codeacademy.ca2025.task2.Task2Manager.FILE_PATH;
 
 public class DriverCSVOperationService {
+
+	private final static Path FILE_PATH = Path.of(System.getProperty("user.home"), "ca2025", "task2.csv");
 
 	private final DriverCSVTransformer driverCSVTransformer;
 
@@ -18,14 +19,29 @@ public class DriverCSVOperationService {
 		this.driverCSVTransformer = driverCSVTransformer;
 	}
 
-	public void saveToCsvDrivers(List<Driver> drivers) throws IOException {
+	public void operate(List<Driver> drivers) {
+		try {
+			Files.createDirectories(FILE_PATH.getParent());
+			Files.writeString(FILE_PATH, "", StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+			saveToCsvDrivers(drivers);
+			System.out.println("File saved at: " + FILE_PATH);
+
+			for (Driver driver : readDriversFromCsv(FILE_PATH)) {
+				System.out.printf("Automobilis %s, vairuotojas %s, valstybinis numeris %s, rida %d\n", driver.getCar(), driver.getName(), driver.getLicensePlate(), driver.getMileage());
+			}
+		} catch (IOException e) {
+			System.out.println("Error while saving file: " + e.getMessage());
+		}
+	}
+
+	private void saveToCsvDrivers(List<Driver> drivers) throws IOException {
 		for (Driver driver : drivers) {
 			final String contentToSave = driverCSVTransformer.toCSV(driver);
 			Files.writeString(FILE_PATH, contentToSave, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
 		}
 	}
 
-	public List<Driver> readDriversFromCsv(final Path csvFilePath) throws IOException {
+	private List<Driver> readDriversFromCsv(final Path csvFilePath) throws IOException {
 		final List<String> lines = Files.readAllLines(csvFilePath);
 		final List<Driver> drivers = new ArrayList<>();
 		for (String line : lines) {
