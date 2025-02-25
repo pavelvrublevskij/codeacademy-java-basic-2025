@@ -21,7 +21,13 @@ public class StreamExample {
 				new Employee("Raze", "Kazaite", BigDecimal.valueOf(4000), 4, "HR"),
 				new Employee("Ona", "Onaite", BigDecimal.valueOf(5000), 5, "Developer"));
 
-		final List<EmployeeForSodraDto> forSodraDtos = new ArrayList<>();
+		for (Employee employee : employees) {
+			System.out.println(employee);
+		}
+
+		employees.forEach(System.out::println);
+
+		/*final List<EmployeeForSodraDto> forSodraDtos = new ArrayList<>();
 		for (Employee employee : employees) {
 			if (employee.getWorkExperience() > 1
 					&& employee.getWorkExperience() <= 4
@@ -33,7 +39,7 @@ public class StreamExample {
 
 		for (EmployeeForSodraDto forSodraDto : forSodraDtos) {
 			System.out.println(forSodraDto);
-		}
+		}*/
 	}
 
 	private void tranformToSodraDtoFrom(final Employee employee, final List<EmployeeForSodraDto> forSodraDtos) {
