@@ -1,5 +1,6 @@
 package lt.codeacademy.ca2025;
 
+import lt.codeacademy.ca2025.stream.StreamExample;
 import lt.codeacademy.ca2025.supplier.SupplierExample;
 
 /**
@@ -10,6 +11,7 @@ public class App {
 //        new LambdaFunctionExample().run();
 //		new LambdaConsumerExample(new RCAddressRetrieverService()).demo();
 //		new PredicateExample().demo();
-		new SupplierExample().demo();
+//		new SupplierExample().demo();
+		new StreamExample().demo();
 	}
 }
