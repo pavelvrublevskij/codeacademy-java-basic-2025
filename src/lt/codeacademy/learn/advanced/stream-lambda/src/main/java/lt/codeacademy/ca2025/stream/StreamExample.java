@@ -3,6 +3,7 @@ package lt.codeacademy.ca2025.stream;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import lt.codeacademy.ca2025.dto.EmployeeForSodraDto;
 import lt.codeacademy.ca2025.model.Employee;
 
@@ -25,28 +26,13 @@ public class StreamExample {
 				.filter(employee -> employee.getWorkExperience() > 1 && employee.getWorkExperience() <= 4)
 				.filter(employee -> employee.getRole().equals("HR"))
 				.filter(employee -> employee.getName().startsWith("P") || employee.getName().startsWith("R"))
-				.forEach(employee -> System.out.println(employee.getSurname()));
-
-		/*final List<EmployeeForSodraDto> forSodraDtos = new ArrayList<>();
-		for (Employee employee : employees) {
-			if (employee.getWorkExperience() > 1
-					&& employee.getWorkExperience() <= 4
-					&& employee.getRole().equals("HR")
-					&& (employee.getName().startsWith("P") || employee.getName().startsWith("R"))) {
-				tranformToSodraDtoFrom(employee, forSodraDtos);
-			}
-		}
-
-		for (EmployeeForSodraDto forSodraDto : forSodraDtos) {
-			System.out.println(forSodraDto);
-		}*/
-	}
-
-	private void tranformToSodraDtoFrom(final Employee employee, final List<EmployeeForSodraDto> forSodraDtos) {
-		final EmployeeForSodraDto forSodraDto = new EmployeeForSodraDto(
-				employee.getName() + " " + employee.getSurname(),
-				calcNeto(employee.getSalary()));
-		forSodraDtos.add(forSodraDto);
+				.map(employee -> {
+					return new EmployeeForSodraDto(
+							employee.getName() + " " + employee.getSurname(),
+							calcNeto(employee.getSalary()));
+				})
+				.toList()
+				.forEach(System.out::println);
 	}
 
 	private BigDecimal calcNeto(final BigDecimal gross) {
