@@ -21,11 +21,11 @@ public class StreamExample {
 				new Employee("Raze", "Kazaite", BigDecimal.valueOf(4000), 4, "HR"),
 				new Employee("Ona", "Onaite", BigDecimal.valueOf(5000), 5, "Developer"));
 
-		for (Employee employee : employees) {
-			System.out.println(employee);
-		}
-
-		employees.forEach(System.out::println);
+		employees.stream()
+				.filter(employee -> employee.getWorkExperience() > 1 && employee.getWorkExperience() <= 4)
+				.filter(employee -> employee.getRole().equals("HR"))
+				.filter(employee -> employee.getName().startsWith("P") || employee.getName().startsWith("R"))
+				.forEach(employee -> System.out.println(employee.getSurname()));
 
 		/*final List<EmployeeForSodraDto> forSodraDtos = new ArrayList<>();
 		for (Employee employee : employees) {
