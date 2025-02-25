@@ -33,6 +33,19 @@ public class StreamExample {
 				})
 				.toList()
 				.forEach(System.out::println);
+
+		calculateSalarySum(employees);
+	}
+
+	private void calculateSalarySum(final List<Employee> employees) {
+		final BigDecimal allEmployeeSalaryAmount = employees.stream()
+				.filter(emp -> emp.getRole().contains("Developer"))
+				.map(emp -> emp.getSalary())
+				.map(salary -> calcNeto(salary))
+				.reduce(BigDecimal::add)
+				.orElse(BigDecimal.ZERO);
+
+		System.out.println("Salary amount of all employees: " + allEmployeeSalaryAmount);
 	}
 
 	private BigDecimal calcNeto(final BigDecimal gross) {
