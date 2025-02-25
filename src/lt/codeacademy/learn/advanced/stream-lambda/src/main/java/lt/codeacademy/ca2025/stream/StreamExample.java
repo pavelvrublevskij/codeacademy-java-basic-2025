@@ -2,6 +2,7 @@ package lt.codeacademy.ca2025.stream;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import lt.codeacademy.ca2025.dto.EmployeeForSodraDto;
@@ -31,7 +32,8 @@ public class StreamExample {
 							employee.getName() + " " + employee.getSurname(),
 							calcNeto(employee.getSalary()));
 				})
-				.toList()
+				.toList().stream()
+				.sorted((Comparator.comparing(EmployeeForSodraDto::getFullname).reversed()))
 				.forEach(System.out::println);
 
 		calculateSalarySum(employees);
