@@ -14,8 +14,12 @@ public class UserController {
 	private final UserService userService;
 
 	public List<UserDto> showAllUsers() {
-		return userService.getAllUsers().stream()
+		final List<UserDto> users = userService.getAllUsers().stream()
 				.map(user -> userDtoMapper.mapToUserDto(user))
 				.collect(Collectors.toList());
+
+		users.forEach(user -> System.out.println(user.email()));
+
+		return users;
 	}
 }
