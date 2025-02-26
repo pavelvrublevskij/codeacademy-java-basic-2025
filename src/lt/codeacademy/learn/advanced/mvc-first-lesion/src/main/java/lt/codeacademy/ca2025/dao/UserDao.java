@@ -31,8 +31,24 @@ public class UserDao {
 
 	public List<UserEntity> getAll() {
 		// gauti visa vartotoju sarasa is duomenu saugyklos
-		return List.of(
-				new UserEntity(1L, "Jonas", "Jonaitis", "123", "j@test.lt", "1234567"),
-				new UserEntity(2L, "Petras", "Jonaitis", "222", "p@test.lt", "1234568"));
+		final UserEntity userEntity = UserEntity.builder()
+				.id(1L)
+				.name("Jonas")
+				.surname("Jonaitis")
+				.password("123")
+				.email("j@test.lt")
+				.phone("1234567")
+				.build();
+
+		final UserEntity userEntity2 = UserEntity.builder()
+				.id(2L)
+				.name("Petras")
+				.surname("Petraitis")
+				.password("222")
+				.email("p@test.lt")
+				.phone("1234568")
+				.build();
+
+		return List.of(userEntity, userEntity2);
 	}
 }
