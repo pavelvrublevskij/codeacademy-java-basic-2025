@@ -7,6 +7,8 @@ public class UserDao {
 
 	public void save(UserEntity userEntity) {
 		// darom saugojima i duomenu saugykla
+		userEntity.getPhone();
+
 	}
 
 	public void update(UserEntity userEntity) {
