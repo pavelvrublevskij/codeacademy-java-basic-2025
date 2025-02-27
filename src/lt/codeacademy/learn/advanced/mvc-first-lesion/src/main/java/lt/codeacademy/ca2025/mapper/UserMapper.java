@@ -10,6 +10,11 @@ public class UserMapper {
 	}
 
 	public UserEntity mapToUserEntity(User user) {
-		return new UserEntity(null, user.getName(), user.getSurname(), null, user.getEmailAddress(), user.getPhoneNumber());
+		return UserEntity.builder()
+				.name(user.getName())
+				.surname(user.getSurname())
+				.email(user.getEmailAddress())
+				.phone(user.getPhoneNumber())
+				.build();
 	}
 }
