@@ -2,7 +2,6 @@ package lt.codeacademy.ca2025.learn.unittesting;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @NoArgsConstructor
@@ -15,5 +14,13 @@ public class Calculator {
 
 	public int sum() {
 		return a + b;
+	}
+
+	public double divide() {
+		try {
+			return a / b;
+		} catch (ArithmeticException e) {
+			throw new ArithmeticException("Division by zero is not allowed");
+		}
 	}
 }

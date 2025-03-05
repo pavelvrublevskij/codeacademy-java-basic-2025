@@ -44,4 +44,16 @@ class CalculatorTest {
 		assertEquals(-20, new Calculator(10, -30).sum());
 	}
 
+	@Test
+	void testDivideByZeroReturnException() {
+		calculator.setA(1);
+		calculator.setB(0);
+		assertThrows(ArithmeticException.class, calculator::divide);
+	}
+
+	@Test
+	void testExceptionMessage() {
+		Exception exception = assertThrows(ArithmeticException.class, calculator::divide);
+		assertEquals("Division by zero is not allowed", exception.getMessage());
+	}
 }
