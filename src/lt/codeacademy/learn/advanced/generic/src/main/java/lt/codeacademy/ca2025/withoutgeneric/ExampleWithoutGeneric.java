@@ -1,5 +1,7 @@
 package lt.codeacademy.ca2025.withoutgeneric;
 
+import java.util.List;
+
 public class ExampleWithoutGeneric {
 
 	public void run() {
