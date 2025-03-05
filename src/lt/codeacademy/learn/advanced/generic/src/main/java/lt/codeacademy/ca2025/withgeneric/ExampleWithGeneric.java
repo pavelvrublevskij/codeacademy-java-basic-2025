@@ -12,6 +12,13 @@ public class ExampleWithGeneric {
 //		boxOfInteger.set("Java"); // Compilation error
 
 		usePairInExample();
+		useRawExample();
+	}
+
+	private void useRawExample() {
+		Box box = new Box(); // Raw type
+		box.set(10);
+//		String text = (String) box.get();  // compilation error
 	}
 
 	private void usePairInExample() {
