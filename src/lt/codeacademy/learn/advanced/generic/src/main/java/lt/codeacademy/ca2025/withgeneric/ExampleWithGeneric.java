@@ -10,5 +10,17 @@ public class ExampleWithGeneric {
 		number = boxOfInteger.get();
 
 //		boxOfInteger.set("Java"); // Compilation error
+
+		usePairInExample();
+	}
+
+	private void usePairInExample() {
+		Pair<Integer, String> pair = new PairImpl<>(1, "Pirmadienis");
+		System.out.println(pair.getKey() + " " + pair.getValue());
+
+		Pair<Integer, Integer> pair2 = new PairImpl<>(1, 2);
+		Pair<Integer, Box<String>> pair3 = new PairImpl<>(1, new Box<>("Test"));
+
+		System.out.println(pair3.getValue().get());
 	}
 }
