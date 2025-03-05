@@ -30,4 +30,13 @@ public class ExampleWithGeneric {
 
 		System.out.println(pair3.getValue().get());
 	}
+
+	public void inheritanceExample(Box<? extends Number> numberBox) {
+		///
+	}
+
+	private void test() {
+		inheritanceExample(new Box<Number>());
+	}
+
 }
